@@ -296,3 +296,48 @@
 
 #         dfs(root)
 #         return res
+
+# Problem: Design Add and Search Word Data Structure
+
+# tricky with for loop and recursion and wildcard
+
+# class Node:
+#     def __init__(self):
+#         self.nodes = [None for i in range(26)]
+#         self.isWord = False
+
+# class WordDictionary:
+
+#     def __init__(self):
+#         self.root = Node()
+
+#     def addWord(self, word: str) -> None:
+#         curr = self.root
+#         for char in word:
+#             i = ord(char) - ord('a')
+#             if not curr.nodes[i]:
+#                 curr.nodes[i] = Node()
+#             curr = curr.nodes[i]
+#         curr.isWord = True
+
+#     def search(self, word: str) -> bool:
+#         curr = self.root
+#         if not word:
+#             return True
+#         def dfs(node, idx):
+#             text = word[idx:]
+#             curr = node
+#             for char in text:
+#                 if char != '.':
+#                     i = ord(char) - ord('a')
+#                     if not curr.nodes[i]:
+#                         return False
+#                     curr = curr.nodes[i]
+#                 else:
+#                     for n in curr.nodes:
+#                         if n != None and dfs(n,idx+1):
+#                             return True
+#                     return False
+#                 idx += 1
+#             return curr.isWord
+#         return dfs(self.root, 0)
