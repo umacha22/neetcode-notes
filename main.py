@@ -214,3 +214,85 @@
 #             if z_values[i] == sub_len:
 #                 return True
 #         return False
+
+# Lowest Common Ancestor in Binary Search Tree
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+
+# class Solution:
+#     def lowestCommonAncestor(self, root: TreeNode, p: TreeNode, q: TreeNode) -> TreeNode:
+#         curr = root
+
+#         while curr:
+#             minVal = min(p.val, q.val)
+#             maxVal = max(p.val,q.val)
+#             if curr.val < minVal:
+#                 curr = curr.right
+#             elif curr.val > maxVal:
+#                 curr = curr.left
+#             else:
+#                 return curr
+
+# Problem: Valid Binary Search Tree
+
+# Given the root of a binary tree, return true if it is a valid binary search tree, otherwise return false.
+
+# A valid binary search tree satisfies the following constraints:
+
+# The left subtree of every node contains only nodes with keys less than the node's key.
+# The right subtree of every node contains only nodes with keys greater than the node's key.
+# Both the left and right subtrees are also binary search trees.
+
+# # Definition for a binary tree node.
+# # class TreeNode:
+# #     def __init__(self, val=0, left=None, right=None):
+# #         self.val = val
+# #         self.left = left
+# #         self.right = right
+
+# class Solution:
+#     def isValidBST(self, root: Optional[TreeNode]) -> bool:
+#         def valid(node, left, right):
+#             if not node:
+#                 return True
+#             if not (left < node.val < right):
+#                 return False
+
+#             return valid(node.left, left, node.val) and valid(
+#                 node.right, node.val, right
+#             )
+
+#         return valid(root, float("-inf"), float("inf"))
+
+# KTH smallest elemt in a BST (1-indexed)
+
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+
+# class Solution:
+#     def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
+#         cnt = k
+#         res = root.val
+
+#         def dfs(node):
+#             nonlocal cnt, res
+#             if not node:
+#                 return
+
+#             dfs(node.left)
+#             cnt -= 1
+#             if cnt == 0:
+#                 res = node.val
+#                 return
+#             dfs(node.right)
+
+#         dfs(root)
+#         return res
