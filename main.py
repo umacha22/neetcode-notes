@@ -341,3 +341,48 @@
 #                 idx += 1
 #             return curr.isWord
 #         return dfs(self.root, 0)
+
+# Problem: Permutations
+
+# class Solution:
+#     def permute(self, nums: List[int]) -> List[List[int]]:
+#         if len(nums) == 0:
+#             return [[]]
+        
+#         perms = self.permute(nums[1:])
+#         res = []
+#         for perm in perms:
+#             for i in range(len(perm)+1):
+#                 p = perm.copy()
+#                 p.insert(i, nums[0])
+#                 res.append(p)
+#         return res
+
+# Problem: Task Scheduler:
+
+# You are given an array of CPU tasks tasks, where tasks[i] is an uppercase english character from A to Z. 
+# You are also given an integer n.
+# Each CPU cycle allows the completion of a single task, and tasks may be completed in any order.
+# The only constraint is that identical tasks must be separated by at least n CPU cycles, to cooldown the CPU.
+# Return the minimum number of CPU cycles required to complete all tasks.
+
+# class Solution:
+    # def leastInterval(self, tasks: List[str], n: int) -> int:
+    #     count = {}
+    #     for t in tasks:
+    #         count[t] = count.get(t,0) + 1
+    #     tasks = [val*-1 for val in list(count.values())]
+    #     heapq.heapify(tasks)
+    #     queue= deque()
+    #     t = 0
+    #     while queue or tasks:
+    #         t += 1
+    #         if tasks:
+    #             val = heapq.heappop(tasks) + 1
+    #             if val != 0:
+    #                 queue.append([val, t+n])
+            
+    #         if queue and queue[0][1] == t:
+    #             val,_ = queue.popleft()
+    #             heapq.heappush(tasks, val)
+    #     return t
